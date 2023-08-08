@@ -1,14 +1,8 @@
 import express, { Request, Response } from "express";
-import { userData } from "../db/userData";
+import { listUsers } from "../controllers/userController";
 
 const router = express.Router();
 
-router.get("/", function (req: Request, res: Response) {
-    const response = {
-        message: "List of all users",
-        users: userData,
-    };
-    res.status(200).json(response);
-});
+router.get("/", listUsers);
 
 export default router;
