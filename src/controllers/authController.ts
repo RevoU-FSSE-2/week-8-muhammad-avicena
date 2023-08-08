@@ -2,15 +2,16 @@ import { Request, Response } from 'express';
 import { userData, UserInterface } from '../db/userData';
 
 export const loginController = (req: Request, res: Response) => {
-    const { username, password } = req.body;
-    const user: UserInterface | undefined = userData.find(u => u.username === username);
+    const { email, password } = req.body;
+    const user: UserInterface | undefined = userData.find(u => u.email === email);
 
     if (!user || user.password !== password) {
-        return res.status(401).json({ message: 'Invalid credentials' });
+        return res.status(401).json({ message: 'Incorrect email or password. Please try again !' });
     }
+    
     const userLocalStorage = JSON.stringify({
         id: user.id,
-        username: user.username,
+        userName: user.username,
         userEmail: user.email,
         isAuth: true,
     });
