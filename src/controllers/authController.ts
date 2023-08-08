@@ -3,7 +3,7 @@ import { userData, UserInterface } from '../db/userData';
 
 export const loginController = (req: Request, res: Response) => {
     const { email, password } = req.body;
-    const user: UserInterface | undefined = userData.find(u => u.email === email);
+    const user: UserInterface | undefined = userData.find(user => user.email === email);
 
     if (!user || user.password !== password) {
         return res.status(401).json({ message: 'Incorrect email or password. Please try again !' });

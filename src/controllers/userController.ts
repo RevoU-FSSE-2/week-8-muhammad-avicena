@@ -9,6 +9,18 @@ export const listUsers = (req: Request, res: Response) => {
     res.status(200).json(response);
 };
 
+export const getUserById = (req: Request, res: Response) => {
+    const userId = parseInt(req.params.userId);
+
+    const user = userData.find(user => user.userId === userId);
+
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ message: 'User found', transaction: user });
+};
+
 export const updateBalanceUser = (req: Request, res: Response) => {
     const userId = parseInt(req.params.userId);
     const { balance } = req.body;

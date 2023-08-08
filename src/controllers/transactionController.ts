@@ -9,6 +9,18 @@ export const listTransaction = (req: Request, res: Response) => {
     res.status(200).json(response);
 };
 
+export const getTransactionById = (req: Request, res: Response) => {
+    const transactionId = parseInt(req.params.transactionId);
+
+    const transaction = transactionData.find(transaction => transaction.transactionId === transactionId);
+
+    if (!transaction) {
+        return res.status(404).json({ message: 'Transaction not found' });
+    }
+
+    res.status(200).json({ message: 'Transaction found', transaction: transaction });
+};
+
 export const createTransaction = (req: Request, res: Response) => {
     const { userId, productName, productQuantity, productPrice } = req.body;
 
@@ -33,3 +45,4 @@ export const createTransaction = (req: Request, res: Response) => {
 
     res.status(201).json({ message: 'Successfully created a transaction', transaction: newTransaction });
 };
+
