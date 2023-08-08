@@ -10,6 +10,7 @@ import * as dotenv from 'dotenv';
 import usersRouter from "./routes/userRoutes";
 import indexRouter from "./routes/indexRoutes";
 import authRoutes from './routes/authRoutes';
+import transactionRoutes from './routes/transactionRoutes';
 
 const app = express();
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
 app.use('/api/auth', authRoutes);
+app.use('/api/transaction', transactionRoutes)
 
 // App listeners
 const server = http.createServer(app);

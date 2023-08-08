@@ -10,7 +10,7 @@ export const loginController = (req: Request, res: Response) => {
     }
     
     const userLocalStorage = JSON.stringify({
-        id: user.id,
+        id: user.userId,
         userName: user.username,
         userEmail: user.email,
         isAuth: true,

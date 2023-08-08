@@ -1,21 +1,24 @@
 export interface UserInterface {
-  id: number;
+  userId: number;
   username: string;
   email: string;
-  password: string
+  password: string;
+  balance: number;
 };
 
 export const userData: UserInterface[] = [
   {
-    id: 1,
+    userId: 1,
     username: "admin",
     email: "admin@dev.com",
-    password: "admin"
+    password: "admin",
+    balance: 10000000
   },
   {
-    id: 2,
+    userId: 2,
     username: "user",
     email: "user@dev.com",
-    password: "user"
+    password: "user",
+    balance: 500000
   },
 ];
