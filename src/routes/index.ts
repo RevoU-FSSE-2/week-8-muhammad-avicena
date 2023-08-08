@@ -5,4 +5,4 @@ router.get('/', function (req: Request, res: Response) {
     res.send("Homepage");
 });
 
-module.exports = router;
+export default router;

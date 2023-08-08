@@ -5,10 +5,13 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
+import * as dotenv from 'dotenv';
 
 import usersRouter from "./routes/users";
+import indexRouter from "./routes";
 
 const app = express();
+dotenv.config();
 app.use(cors({
     credentials: true
 }))
@@ -17,13 +20,14 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 // Routes
+app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
 
 // App listeners
 const server = http.createServer(app);
-const port = 5001;
+const port = process.env.PORT || 8080;
 server.listen(port, () => {
-    console.log('server listening on port ' + port);
+    console.log('Running on http://localhost:' + port);
 })
 
 // Error handlers
