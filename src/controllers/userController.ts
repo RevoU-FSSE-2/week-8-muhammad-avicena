@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { userData } from '../db/userData';
 
-export const listUsers = (req: Request, res: Response) => {
+export const listUser = (req: Request, res: Response) => {
     const response = {
         message: 'List of all users',
         users: userData,
