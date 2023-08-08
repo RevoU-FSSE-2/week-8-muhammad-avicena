@@ -7,8 +7,8 @@ import compression from 'compression';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 
-import usersRouter from "./routes/users";
-import indexRouter from "./routes";
+import usersRouter from "./routes/userRoutes";
+import indexRouter from "./routes/indexRoutes";
 
 const app = express();
 dotenv.config();
