@@ -83,6 +83,25 @@ export const updateTransaction = (req: Request, res: Response) => {
     res.status(200).json({ message: 'Successfully updated a transaction', user: transactionData[transactionIndex] });
 };
 
+export const updatePriceTransaction = (req: Request, res: Response) => {
+    const transactionId = parseInt(req.params.transactionId);
+    const { productPrice } = req.body;
+
+    const transactionIndex = transactionData.findIndex(transaction => transaction.transactionId === transactionId);
+
+    if (transactionIndex === -1) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    if (productPrice !== undefined) {
+        transactionData[transactionIndex].productPrice = productPrice;
+    } else {
+        return res.status(400).json({ message: 'Invalid input data' });
+    }
+
+    res.status(200).json({ message: 'Transaction price updated', user: transactionData[transactionIndex] });
+};
+
 export const deleteTransaction = (req: Request, res: Response) => {
     const transactionId = parseInt(req.params.transactionId);
 
