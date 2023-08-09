@@ -8,12 +8,12 @@ const loginController = (req, res) => {
     if (!user || user.password !== password) {
         return res.status(401).json({ message: 'Incorrect email or password. Please try again !' });
     }
-    const userLocalStorage = JSON.stringify({
+    const response = ({
         id: user.userId,
         userName: user.username,
         userEmail: user.email,
         isAuth: true,
     });
-    res.status(200).json({ message: 'Login successful', user: userLocalStorage });
+    res.status(200).json({ message: 'Login successful', user: response });
 };
 exports.loginController = loginController;
