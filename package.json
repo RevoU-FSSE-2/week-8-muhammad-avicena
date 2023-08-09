@@ -2,10 +2,11 @@
   "name": "week-8-muhammad-avicena",
   "version": "1.0.0",
   "description": "Build simple application with Node & Express typescript",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
     "dev": "tsnd src/app.ts --respawn --transpile --exit-child",
-    "start": "concurrently \"npx tsc --watch\" \"nodemon dist/app"
+    "start": "concurrently \"npx tsc --watch\" \"nodemon dist/app",
+    "build": "npx tsc && node dist/app"
   },
   "keywords": [],
   "author": "",
