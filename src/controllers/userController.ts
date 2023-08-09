@@ -37,5 +37,5 @@ export const updateBalanceUser = (req: Request, res: Response) => {
         return res.status(400).json({ message: 'Invalid input data' })
     }
 
-    res.status(200).json({ message: 'User balance updated', user: userData[userIndex] });
+    res.status(204).json({ message: 'User balance updated', user: userData[userIndex] });
 };
