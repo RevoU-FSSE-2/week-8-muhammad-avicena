@@ -1,7 +1,19 @@
 "use strict";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTransaction = exports.updatePriceTransaction = exports.updateTransaction = exports.createTransaction = exports.getTransactionById = exports.listTransaction = void 0;
 const transactionData_1 = require("../db/transactionData");
+const userData_1 = require("../db/userData");
 const isTransactionValid = (userId, productName, productQuantity, productPrice) => {
     return (userId !== undefined &&
         typeof userId === 'number' &&
@@ -12,10 +24,23 @@ const isTransactionValid = (userId, productName, productQuantity, productPrice) 
         productPrice !== undefined &&
         typeof productPrice === 'number');
 };
+const filteredData = userData_1.userData.map((user) => {
+    const { password } = user, userWithoutPassword = __rest(user, ["password"]);
+    return userWithoutPassword;
+});
 const listTransaction = (req, res) => {
+    const transactionsWithUserData = transactionData_1.transactionData.map((transaction) => {
+        const user = filteredData.find((user) => user.userId === transaction.userId);
+        if (user) {
+            return Object.assign(Object.assign({}, transaction), { userId: user });
+        }
+        else {
+            return transaction;
+        }
+    });
     const response = {
         message: 'List of all transactions',
-        transaction: transactionData_1.transactionData,
+        transactions: transactionsWithUserData,
     };
     res.status(200).json(response);
 };
@@ -31,8 +56,12 @@ const getTransactionById = (req, res) => {
 exports.getTransactionById = getTransactionById;
 const createTransaction = (req, res) => {
     const { userId, productName, productQuantity, productPrice } = req.body;
-    if (isTransactionValid(userId, productName, productQuantity, productPrice)) {
+    if (!isTransactionValid(userId, productName, productQuantity, productPrice)) {
         return res.status(400).json({ message: 'Invalid input data' });
+    }
+    const isValidUserId = userData_1.userData.some((user) => user.userId === userId);
+    if (!isValidUserId) {
+        return res.status(400).json({ message: 'Invalid input userId, please check the userId on database' });
     }
     const newTransactionId = transactionData_1.transactionData.length + 1;
     const newTransaction = {
