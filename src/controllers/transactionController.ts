@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { transactionData, TransactionInterface } from '../db/transactionData';
+import { userData, UserInterface } from '../db/userData';
 
 const isTransactionValid = (
     userId: number,
@@ -19,10 +20,27 @@ const isTransactionValid = (
     );
 };
 
+const filteredData: Omit<UserInterface, 'password'>[] = userData.map((user) => {
+    const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+});
+
 export const listTransaction = (req: Request, res: Response) => {
+    const transactionsWithUserData = transactionData.map((transaction) => {
+        const user = filteredData.find((user) => user.userId === transaction.userId);
+        if (user) {
+            return {
+                ...transaction,
+                userId: user,
+            };
+        } else {
+            return transaction;
+        }
+    });
+
     const response = {
         message: 'List of all transactions',
-        transaction: transactionData,
+        transactions: transactionsWithUserData,
     };
     res.status(200).json(response);
 };
@@ -42,8 +60,14 @@ export const getTransactionById = (req: Request, res: Response) => {
 export const createTransaction = (req: Request, res: Response) => {
     const { userId, productName, productQuantity, productPrice } = req.body;
 
-    if (isTransactionValid(userId, productName, productQuantity, productPrice)) {
+    if (!isTransactionValid(userId, productName, productQuantity, productPrice)) {
         return res.status(400).json({ message: 'Invalid input data' });
+    }
+
+    const isValidUserId = userData.some((user) => user.userId === userId);
+
+    if (!isValidUserId) {
+        return res.status(400).json({ message: 'Invalid input userId, please check the userId on database' });
     }
 
     const newTransactionId = transactionData.length + 1;
