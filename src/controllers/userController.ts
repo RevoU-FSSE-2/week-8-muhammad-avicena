@@ -21,9 +21,9 @@ export const getUserById = (req: Request, res: Response) => {
     res.status(200).json({ message: 'User found', user: user });
 };
 
-export const updatePasswordUser = (req: Request, res: Response) => {
+export const updateUsernameUser = (req: Request, res: Response) => {
     const userId = parseInt(req.params.userId);
-    const { password } = req.body; 
+    const { username } = req.body; 
 
     const userIndex = userData.findIndex(user => user.userId === userId);
 
@@ -31,13 +31,13 @@ export const updatePasswordUser = (req: Request, res: Response) => {
         return res.status(404).json({ message: 'User not found' });
     }
 
-    if (password !== undefined) {
-        userData[userIndex].password = password;
+    if (username !== undefined) {
+        userData[userIndex].username = username;
     } else {
         return res.status(400).json({ message: 'Invalid input data' })
     }
 
-    res.status(200).json({ message: 'User password updated', user: userData[userIndex] });
+    res.status(200).json({ message: 'User username updated', user: userData[userIndex] });
 };
 
 export const updateBalanceUser = (req: Request, res: Response) => {
