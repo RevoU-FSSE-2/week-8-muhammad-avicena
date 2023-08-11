@@ -4,8 +4,8 @@ import { listUser, updateBalanceUser, getUserById, updatePasswordUser } from "..
 const router = express.Router();
 
 router.get("/", listUser);
-router.patch("/:userId", updatePasswordUser);
 router.patch("/:userId", updateBalanceUser);
+router.put("/:userId", updatePasswordUser);
 router.get("/:userId", getUserById);
 
 export default router;
