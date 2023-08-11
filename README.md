@@ -25,7 +25,7 @@ Interested to have collaboration ? Find me on:
 
 **Endpoint:** [https://financial-api.avicena.dev](https://financial-api.avicena.dev)
  
-| Name | Methode | Endpoint | Requirements
+| Name  | HTTP Method | Endpoint | Requirements
 | ----------- | ----------- | ----------- | ----------- |
 | **Auth Login** | `POST` | [/api/auth/login](https://financial-api.avicena.dev/api/auth/login) | Request Body: `email: string, password: string`
 | **List All User** | `GET` | [/api/user](https://financial-api.avicena.dev/api/user)
