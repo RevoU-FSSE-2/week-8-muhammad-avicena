@@ -30,14 +30,14 @@ Interested to have collaboration ? Find me on:
 | **Auth Login** | `POST` | [/api/auth/login](https://financial-api.avicena.dev/api/auth/login) | Request Body: `email: string, password: string`
 | **List All User** | `GET` | [/api/user](https://financial-api.avicena.dev/api/user)
 | **List All Transaction** | `GET` | [/api/transaction](https://financial-api.avicena.dev/api/transaction)
-| **List User by ID** | `GET` | [/api/user/:userId](https://financial-api.avicena.dev/api/user/1) | Request Parameter: <br>`userId: number`
+| **List User by ID** | `GET` | [/api/user/:userId](https://financial-api.avicena.dev/api/user/1) | Request Parameter: <br><br>`userId: number`
 | **Create Transaction** | `POST` | [/api/transaction](https://financial-api.avicena.dev/api/transaction) | Request Body: `userId: number, productName: string, productQuantity: number, productPrice: number`
 | **List Transaction by ID** | `GET` | [/api/transaction/:transactionId](https://financial-api.avicena.dev/api/transaction/1) | Request Parameter: `transactionId: number`
-| **Update Transaction by ID** | `PUT` | [/api/transaction/:transactionId](https://financial-api.avicena.dev/api/transaction/1) | Request Parameter: `transactionId: number` <br>Request Body: `userId: number, productName: string, productQuantity: number, productPrice: number`
+| **Update Transaction by ID** | `PUT` | [/api/transaction/:transactionId](https://financial-api.avicena.dev/api/transaction/1) | Request Parameter: `transactionId: number` <br> <br>Request Body: `userId: number, productName: string, productQuantity: number, productPrice: number`
 | **Delete Transaction by ID** | `DELETE` | [/api/transaction/:transactionId](https://financial-api.avicena.dev/api/transaction/1) | Request Parameter: `transactionId: number`
-| **Update Balance User by ID** | `PATCH` | [/api/user/:userId](https://financial-api.avicena.dev/api/user/1) | Request Parameter: `userId: number` <br> Request Body: `balance: number`
-| **Update Password User by ID** | `PATCH` | [/api/user/:userId](https://financial-api.avicena.dev/api/user/1) | Request Parameter: `userId: number` <br> Request Body: `password: string`
-| **Update Price Transaction by ID** | `PATCH` | [/api/transaction/:transactionId](https://financial-api.avicena.dev/api/transaction/1) | Request Parameter: `transactionId: number` <br> Request Body: `productPrice: number`
+| **Update Balance User by ID** | `PATCH` | [/api/user/:userId](https://financial-api.avicena.dev/api/user/1) | Request Parameter: `userId: number` <br> <br>Request Body: `balance: number`
+| **Update Password User by ID** | `PATCH` | [/api/user/:userId](https://financial-api.avicena.dev/api/user/1) | Request Parameter: `userId: number` <br><br> Request Body: `password: string`
+| **Update Price Transaction by ID** | `PATCH` | [/api/transaction/:transactionId](https://financial-api.avicena.dev/api/transaction/1) | Request Parameter: `transactionId: number` <br><br> Request Body: `productPrice: number`
 
 
 ## DEPLOYMENT ⚙️
