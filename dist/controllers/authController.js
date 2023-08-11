@@ -12,7 +12,8 @@ const loginController = (req, res) => {
         id: user.userId,
         userName: user.username,
         userEmail: user.email,
-        isAuth: true,
+        balance: user.balance,
+        isAuth: true
     });
     res.status(200).json({ message: 'Login successful', user: response });
 };

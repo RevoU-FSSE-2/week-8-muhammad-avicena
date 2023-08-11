@@ -18,7 +18,7 @@ export const getUserById = (req: Request, res: Response) => {
         return res.status(404).json({ message: 'User not found' });
     }
 
-    res.status(200).json({ message: 'User found', transaction: user });
+    res.status(200).json({ message: 'User found', user: user });
 };
 
 export const updatePasswordUser = (req: Request, res: Response) => {
