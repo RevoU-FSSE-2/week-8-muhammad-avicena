@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateBalanceUser = exports.getUserById = exports.listUser = void 0;
+exports.updateBalanceUser = exports.updatePasswordUser = exports.getUserById = exports.listUser = void 0;
 const userData_1 = require("../db/userData");
 const listUser = (req, res) => {
     const response = {
@@ -19,6 +19,22 @@ const getUserById = (req, res) => {
     res.status(200).json({ message: 'User found', transaction: user });
 };
 exports.getUserById = getUserById;
+const updatePasswordUser = (req, res) => {
+    const userId = parseInt(req.params.userId);
+    const { password } = req.body;
+    const userIndex = userData_1.userData.findIndex(user => user.userId === userId);
+    if (userIndex === -1) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+    if (password !== undefined) {
+        userData_1.userData[userIndex].password = password;
+    }
+    else {
+        return res.status(400).json({ message: 'Invalid input data' });
+    }
+    res.status(200).json({ message: 'User password updated', user: userData_1.userData[userIndex] });
+};
+exports.updatePasswordUser = updatePasswordUser;
 const updateBalanceUser = (req, res) => {
     const userId = parseInt(req.params.userId);
     const { balance } = req.body;
@@ -32,6 +48,6 @@ const updateBalanceUser = (req, res) => {
     else {
         return res.status(400).json({ message: 'Invalid input data' });
     }
-    res.status(204).json({ message: 'User balance updated', user: userData_1.userData[userIndex] });
+    res.status(200).json({ message: 'User balance updated', user: userData_1.userData[userIndex] });
 };
 exports.updateBalanceUser = updateBalanceUser;
