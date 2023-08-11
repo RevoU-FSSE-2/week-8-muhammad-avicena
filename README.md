@@ -20,10 +20,34 @@ Interested to have collaboration ? Find me on:
   - Icon
   - Image
   - TailwindCSS
+## KEY FEATURES 🌟
 
-## Available API 📰
+- Login (Basic Authentication)
+- Create a transaction
+- Update a transaction
+- View a transaction
+- Delete a transaction
+- Update balance 
+- Update username 
+- Logout
 
-**Endpoint:** [https://financial-api.avicena.dev](https://financial-api.avicena.dev)
+**Available Account** :
+```
+{
+  "email": "admin@dev.com",
+  "password": "admin"
+}
+```
+```
+{
+  "email": "user@dev.com",
+  "password": "user"
+}
+```
+
+## AVAILABLE API 📰
+
+**Back-end endpoint:** [https://financial-api.avicena.dev](https://financial-api.avicena.dev) 
  
 | Name  | HTTP Method | Endpoint | Requirements
 | ----------- | ----------- | ----------- | ----------- |
