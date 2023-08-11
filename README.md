@@ -1,7 +1,6 @@
-<!-- ![header](assets/image.png)
-![donation](assets/donation.png) -->
+[![readme_header](https://github.com/muhammad-avicena/profile/assets/49929404/b7b89034-8e25-4f25-a1a2-5665aa66448c)](https://avicena.dev/)
 
-<h1 align="left">Welcome to Financial-Tracker App: Build Your Financial Portofolio ! <img src="https://raw.githubusercontent.com/muhammad-avicena/profile/master/wave.gif" width="30px" height="30px" /> </h1>
+<h1 align="center">Fancy to see you here <img src="https://raw.githubusercontent.com/muhammad-avicena/profile/master/wave.gif" width="30px" height="30px" /> </h1>
 
 hi, I'm Muhammad Avicena. In this repo, I build The Financial Tracker app, it's a web-app tool designed to help users manage and track their financial transactions and expenses.
 
