@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsnd src/app.ts --respawn --transpile --exit-child",
     "start": "node dist/app.js",
-    "build": "concurrently \"npx tsc --watch\" \"nodemon dist/app.js"
+    "build": "tsc",
+    "dev2": "concurrently \"npx tsc --watch\" \"nodemon dist/app.js"
   },
   "keywords": [],
   "author": "",
